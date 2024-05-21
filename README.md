@@ -1,8 +1,12 @@
 # ncbe_project
 
 ### Setup instructions
-1. clone the repo onto your machine
-2. run `php -S localhost:8000` to start server (I'm assuming you have php set in your PATH)
+1. Clone the repo onto your machine
+2. In the project root, run `php -S localhost:8000` to start server (I'm assuming you have php set in your PATH)
+
+### Running the program
+1. Once you have the server running, navigate to `http://localhost:8000/` in your browser
+2. This will trigger the report to display in your server console
 
 ### Test Data
 This is hardcoded in the project, but for easier reading I've consolidated the details here

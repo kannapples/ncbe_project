@@ -1,6 +1,13 @@
 <?php
-include './Entity/Employee.php';
+require_once './Entity/Employee.php';
+require_once './Entity/Department.php';
+require_once './Service/EmployeeService.php';
+require_once './Service/DepartmentService.php';
 
-$department_interior = new Department(1, 'interior');
-$new_intern = new Intern(1, 'claire', $department_interior, Employee::FULL_TIME);
-var_dump($new_intern);
+$departmentService = new DepartmentService();
+$employeeService = new EmployeeService();
+
+$departments = $departmentService->buildDepartments();
+$employees = $employeeService->buildEmployees($departments);
+
+var_dump($employees);

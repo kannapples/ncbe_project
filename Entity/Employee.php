@@ -1,5 +1,4 @@
 <?php
-include './Entity/Department.php';
 
 class Employee {
     const FULL_TIME = 'full_time';

@@ -1,13 +1,12 @@
 <?php
-//TODO: use department entity instead of string
-// include './Entity/Department.php';
+include './Entity/Department.php';
 
 class Employee {
     const FULL_TIME = 'full_time';
     const PART_TIME = 'part_time';
     public int $id;
     public string $name;
-    public string $department;
+    public Department $department;
     public string $type;
     public int $hourly_rate;
     public int $weekly_bonus;

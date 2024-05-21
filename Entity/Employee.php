@@ -14,7 +14,10 @@ class Employee {
         $this->id = $id;
         $this->name = $name;
         $this->department = $department;
-        $this->type = $type; //TODO - validate this against full or part time consts
+        if (!in_array($type, [$this::FULL_TIME, $this::PART_TIME])) {
+            throw new Exception('All employees must be either full_time or part_time');
+        }
+        $this->type = $type;
     }
 }
 

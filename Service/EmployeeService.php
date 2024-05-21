@@ -4,11 +4,11 @@ class EmployeeService {
     function buildEmployees(array $departments): array
     {
         return [
-            new Intern(1, 'claire', $departments[0], Employee::FULL_TIME),
-            new FloorWorker(2, 'molly', $departments[1], Employee::PART_TIME),
-            new Supervisor(3, 'jamie', $departments[1], Employee::PART_TIME),
-            new Manager(4, 'sam', $departments[0], Employee::FULL_TIME),
-            new Executive(5, 'phoebe', $departments[0], Employee::FULL_TIME),
+            1 => new Intern(1, 'claire', $departments[1], Employee::FULL_TIME),
+            2 => new FloorWorker(2, 'molly', $departments[2], Employee::PART_TIME),
+            3 => new Supervisor(3, 'jamie', $departments[2], Employee::PART_TIME),
+            4 => new Manager(4, 'sam', $departments[1], Employee::FULL_TIME),
+            5 => new Executive(5, 'phoebe', $departments[1], Employee::FULL_TIME),
         ];
     }
 
@@ -42,5 +42,16 @@ class EmployeeService {
         }
 
         return $pay_list;
+    }
+
+    function sortEmployeesByName(array $employees): array
+    {
+        usort($employees, function($a, $b) 
+            { 
+                return strcmp($a->name, $b->name);
+            }
+        );
+
+        return $employees;
     }
 }

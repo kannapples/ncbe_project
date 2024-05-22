@@ -11,52 +11,112 @@ class Employee {
     public int $weekly_bonus;
 
     public function __construct($id, $name, $department, $type) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->department = $department;
+        $this->setId($id);
+        $this->setName($name);
+        $this->setDepartment($department);
         if (!in_array($type, [$this::FULL_TIME, $this::PART_TIME])) {
             throw new Exception('All employees must be either full_time or part_time');
         }
+        $this->setType($type);
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getDepartment(): Department
+    {
+        return $this->$department;
+    }
+
+    public function setDepartment(Department $department): void
+    {
+        $this->department = $department;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): void
+    {
         $this->type = $type;
+    }
+
+    public function getHourlyRate(): int
+    {
+        return $this->hourly_rate;
+    }
+
+    public function setHourlyRate(int $hourly_rate): void
+    {
+        $this->hourly_rate = $hourly_rate;
+    }
+
+    public function getWeeklyBonus(): int
+    {
+        return $this->weekly_bonus;
+    }
+
+    public function setWeeklyBonus(int $weekly_bonus): void
+    {
+        $this->weekly_bonus = $weekly_bonus;
     }
 }
 
 class Intern extends Employee {
     public function __construct($id, $name, $department, $type) {
         parent::__construct($id, $name, $department, $type);
-        $this->hourly_rate = 10;
-        $this->weekly_bonus = 0;
+        $this->setHourlyRate(10);
+        $this->setWeeklyBonus(0);
     }
 }
 
 class FloorWorker extends Employee {
     public function __construct($id, $name, $department, $type) {
         parent::__construct($id, $name, $department, $type);
-        $this->hourly_rate = 20;
-        $this->weekly_bonus = 0;
+        $this->setHourlyRate(20);
+        $this->setWeeklyBonus(0);
     }
 }
 
 class Supervisor extends Employee {
     public function __construct($id, $name, $department, $type) {
         parent::__construct($id, $name, $department, $type);
-        $this->hourly_rate = 25;
-        $this->weekly_bonus = 0;
+        $this->setHourlyRate(25);
+        $this->setWeeklyBonus(0);
     }
 }
 
 class Manager extends Employee {
     public function __construct($id, $name, $department, $type) {
         parent::__construct($id, $name, $department, $type);
-        $this->hourly_rate = 35;
-        $this->weekly_bonus = 50;
+        $this->setHourlyRate(35);
+        $this->setWeeklyBonus(50);
     }
 }
 
 class Executive extends Employee {
     public function __construct($id, $name, $department, $type) {
         parent::__construct($id, $name, $department, $type);
-        $this->hourly_rate = 50;
-        $this->weekly_bonus = 50;
+        $this->setHourlyRate(50);
+        $this->setWeeklyBonus(50);
     }
 }

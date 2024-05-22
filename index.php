@@ -21,13 +21,13 @@ error_log('Departments sorted by Total Pay');
 error_log('-------------------------------');
 $departmentPay = $departmentService->sortDepartmentsByTotalPay($departments, $employees, $pay);
 foreach ($departmentPay as $id => $pay) {
-    error_log($departments[$id]->name . ': $' . $pay);
+    error_log($departments[$id]->getName() . ': $' . $pay);
 }
 error_log('-------------------------------');
 error_log('Employees sorted by Name');
 error_log('-------------------------------');
 $sortedEmployees = $employeeService->sortEmployeesByName($employees);
 foreach ($sortedEmployees as $employee) {
-    error_log($employee->name . ':');
-    error_log(' - Hourly rate: ' . $employee->hourly_rate);
+    error_log($employee->getName() . ':');
+    error_log(' - Hourly rate: ' . $employee->getHourlyRate());
 }

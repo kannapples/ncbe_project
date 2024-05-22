@@ -15,13 +15,13 @@ class DepartmentService {
         foreach ($departments as $department) {
             //only look at employees within an individual department
             $deptEmployees = array_filter($employees, function($v, $k) use ($department) {
-                return $v->department->id === $department->id;
+                return $v->department->getId() === $department->getId();
             }, ARRAY_FILTER_USE_BOTH);
             $deptEmployeeIds = array_column($deptEmployees, 'id');
             //only look at pay for department employees
             $deptEmployeePay = array_intersect_key($pay, array_flip($deptEmployeeIds));
 
-            $departmentPay[$department->id] = array_sum($deptEmployeePay);
+            $departmentPay[$department->getId()] = array_sum($deptEmployeePay);
         }
         //sort by pay descending
         arsort($departmentPay);

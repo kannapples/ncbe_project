@@ -31,14 +31,14 @@ class EmployeeService {
 
         $pay_list = [];
         foreach ($employees as $employee) {
-            $hours_worked = $timecards[$employee->id];
-            if ($employee->type === Employee::FULL_TIME && $hours_worked > 40) {
+            $hours_worked = $timecards[$employee->getId()];
+            if ($employee->getType() === Employee::FULL_TIME && $hours_worked > 40) {
                 $overtime_hours = $hours_worked - 40;
-                $pay = 40*$employee->hourly_rate + $overtime_hours*$employee->hourly_rate*1.5 + $employee->weekly_bonus;
+                $pay = 40*$employee->getHourlyRate() + $overtime_hours*$employee->getHourlyRate()*1.5 + $employee->getWeeklyBonus();
             } else {
-                $pay = $hours_worked*$employee->hourly_rate + $employee->weekly_bonus;
+                $pay = $hours_worked*$employee->getHourlyRate() + $employee->getWeeklyBonus();
             }
-            $pay_list[$employee->id] = $pay;
+            $pay_list[$employee->getId()] = $pay;
         }
 
         return $pay_list;
@@ -48,7 +48,7 @@ class EmployeeService {
     {
         usort($employees, function($a, $b) 
             { 
-                return strcmp($a->name, $b->name);
+                return strcmp($a->getName(), $b->getName());
             }
         );
 
